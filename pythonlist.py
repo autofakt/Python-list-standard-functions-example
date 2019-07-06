@@ -17,6 +17,8 @@ while(option != 7):
     print("5 - Find minimum")
     print("6 - Sort the list in descending order")
     print("7 - Quit the program")
+    print("8 - Reverse list")
+    print("9 - Print list")
     option = int(input("Please select an option: "))
     print("=====================================")
     print()
@@ -31,7 +33,8 @@ while(option != 7):
     if (option == 2):
         if(len(studentFullName)==0): # display error message if list is empty
             print("List is empty, cannot remove an item")
-        while(len(studentFullName)>0): # does not allow you to enter loop while list empty     
+        #while(len(studentFullName)>0): # does not allow you to enter loop while list empty     
+        if(len(studentFullName)>0):
             print("List len: ",len(studentFullName))
             option2 = input("Remove by name or index? (N for name I for index): ").upper()
             
@@ -41,9 +44,13 @@ while(option != 7):
             if option2 == 'N':
                 print("Before operation: ",studentFullName)
                 itemName = input("Item # remove from the list: ")
+                while(itemName not in studentFullName):  # Error checking
+                    print("Not in list, try again")
+                    itemName = input("Item # remove from the list: ")
                 studentFullName.remove(itemName)
                 print("After operation: ",studentFullName)
                 print()
+                continue
             if option2 == "I":
                 print("Length of list: ", len(studentFullName))
                 print("Before operation: ",studentFullName)
@@ -111,3 +118,12 @@ while(option != 7):
         print("Before operation: ",studentFullName)
         studentFullName.sort(reverse=True)  # sorts in descending order
         print("After operation: ",studentFullName)
+        
+    if option ==8:
+        print("Before operation: ",studentFullName)
+        studentFullName.reverse()  # reverses the list
+        print("After operation: ",studentFullName)
+        
+    if option ==9:
+        print("Current Print: ",studentFullName)
+        
